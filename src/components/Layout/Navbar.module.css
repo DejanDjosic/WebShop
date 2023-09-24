@@ -1,0 +1,32 @@
+.Categories_optionbar__1zY3C {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    align-items: center;
+    padding: 10px 30px;
+    margin-top: 1px;
+    -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+  }
+  .Categories_item__2Vyh8 {
+    padding: 5px 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #333;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+    list-style: none;
+  }
+  .Categories_item__2Vyh8:hover,
+  .Categories_active__30_rV .Categories_item__2Vyh8 {
+    color: #000;
+  }
+  .Categories_separator__3awbQ {
+    color: #666;
+  }

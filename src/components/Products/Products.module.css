@@ -1,0 +1,85 @@
+.Products_grid__3uY1j {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 30px;
+    max-width: 1084px;
+    padding: 30px;
+    margin: 0 auto 30px;
+  }
+
+  .Product_item__342sG {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    border: 1px solid #eee;
+    background-color: #f2f2f2;
+    word-wrap: break-word;
+    -webkit-transition: -webkit-box-shadow 0.25s;
+    transition: -webkit-box-shadow 0.25s;
+    transition: box-shadow 0.25s;
+    transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
+    padding-bottom: 20px;
+  }
+  .Product_item__342sG:hover {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .Product_image_wrapper_IYyRO {
+    padding-top: 100%;
+    position: relative;
+    background-color: #fff;
+  }
+  .Product_image__3U4Td {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    object-position: center;
+    object-fit: contain;
+  }
+  .Product_info__2u1rw {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+  }
+  .Product_title__21bFz {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #999;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+  }
+  .Product_btn__35pZE:hover {
+    color: #000;
+  }
+  .Product_desc__yDphz {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  .Product_btn__35pZE {
+    margin-top: auto;
+    text-align: right;
+    font-weight: bold;
+    color: #333;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+  }
+
+  .parent
+  {
+    text-align: center;
+  }

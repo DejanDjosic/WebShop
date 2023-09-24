@@ -1,0 +1,16 @@
+.Footer_footer__317iK {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    align-items: center;
+    height: 40px;
+    padding: 0 30px;
+    margin-top: auto;
+    color: #fff;
+    background-color: #000;
+  }
