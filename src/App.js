@@ -6,8 +6,9 @@ import Login from "./components/Login & Register/Login";
 import Register from "./components/Login & Register/Register";
 import Cart from "./components/Cart/Cart";
 import Footer from "./components/Layout/Footer";
+import { useState } from "react";
 
-const ProductsArray = [
+const AllProductsArray = [
   {
     name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
     price: 109.95,
@@ -107,10 +108,12 @@ const ProductsArray = [
     id: 10,
   },
   {
-    name: "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
+    name:
+      "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
     price: 109,
     description:
-'3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.',    image: "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
+      "3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.",
+    image: "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
     category: `Electronics`,
 
     id: 11,
@@ -168,8 +171,7 @@ const ProductsArray = [
     id: 16,
   },
   {
-    name:
-      "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
+    name: "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
     price: 39.99,
     description:
       "Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.",
@@ -179,33 +181,31 @@ const ProductsArray = [
     id: 17,
   },
   {
-    name:
-      "MBJ Women's Solid Short Sleeve Boat Neck V",
-    price:9.85,
+    name: "MBJ Women's Solid Short Sleeve Boat Neck V",
+    price: 9.85,
     description:
-'95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem',    
-image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
+      "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
+    image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
     category: `Women's Clothing`,
 
     id: 18,
   },
   {
-    name:
-      "Opna Women's Short Sleeve Moisture",
-    price:9.85,
+    name: "Opna Women's Short Sleeve Moisture",
+    price: 9.85,
     description:
-'100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort',
-   image: "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort",
+    image: "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
     category: `Women's Clothing`,
 
     id: 19,
   },
   {
-    name:
-      "DANVOUY Womens T Shirt Casual Cotton Short",
-    price:12.99,
+    name: "DANVOUY Womens T Shirt Casual Cotton Short",
+    price: 12.99,
     description:
-'95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.',   image: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+      "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
+    image: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
     category: `Women's Clothing`,
 
     id: 20,
@@ -213,18 +213,28 @@ image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
 ];
 
 function App() {
+  const [category, setCategory] = useState("All");
+
+  const selectedCategoryArray = AllProductsArray.filter((product) => {
+    if (category.name === "All" || category === "All") {
+      return product;
+    }
+    if (product.category === category.name) {
+      return product;
+    }
+  });
+  const categoryChangeHandler = (category) => setCategory(category);
+
   return (
-    <div id="__next">
-      <div className="Layout_layout__23AcS">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Products items={ProductsArray} />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-        <Footer/>
-      </div>
+    <div className="Layout_layout__23AcS">
+      <Header onCategoryChange={categoryChangeHandler} />
+      <Routes>
+        <Route path="/" element={<Products items={selectedCategoryArray} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }

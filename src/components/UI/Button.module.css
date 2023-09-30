@@ -1,0 +1,38 @@
+.Button_btn__1N_e1 {
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  align-items: center;
+  height: 32px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #000;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.Button_btn__1N_e1:not(.Button_disabled__3cug_):hover {
+  background-color: #333;
+}
+.Button_secondary__xQb4Z {
+  color: #333;
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+.Button_secondary__xQb4Z:not(.Button_disabled__3cug_):hover {
+  background-color: #eee;
+}
+.Button_disabled__3cug_ {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+span {
+  font-size: 24px;
+  margin-left: 8px;
+}

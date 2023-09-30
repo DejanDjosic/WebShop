@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Product from "./Product";
 import classes from "./Products.module.css";
 
-// import image from '../../assets/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg';
 
 const Products = (props) => {
   const [details, setDetails] = useState(false);
+  
   props.items.forEach((element) => {
     element.description = `${element.description.slice(0, 100)}...`;
     if (element.name.length > 47)

@@ -22,6 +22,7 @@
     -webkit-transition: color 0.2s;
     transition: color 0.2s;
     list-style: none;
+    cursor: pointer;
   }
   .Categories_item__2Vyh8:hover,
   .Categories_active__30_rV .Categories_item__2Vyh8 {
