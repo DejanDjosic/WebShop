@@ -85,7 +85,7 @@ const Login = () => {
         />
        
         <div className={classes.actions}>
-          <Button text="Login" icon="arrow" disabled={!formIsValid} />
+          <Button text="Login" icon="arrow"  />
         </div>
       </form>
     </div>

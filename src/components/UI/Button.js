@@ -7,7 +7,7 @@ const Button = (props) => {
 else
 icon=props.icon;
   return (
-    <button className={classes.Button_btn__1N_e1} type="submit">
+    <button className={classes.Button_btn__1N_e1} type="submit" disabled={props.isDisabled}>
       {props.text}<span>{icon}</span>
     </button>
   );
