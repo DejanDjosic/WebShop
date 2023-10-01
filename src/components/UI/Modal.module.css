@@ -1,0 +1,63 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.75);
+  }
+  
+  .modal {
+    position: fixed;
+    top: 30vh;
+    left: 10%;
+    width: 80%;
+    z-index: 100;
+    overflow: hidden;
+    background: linear-gradient(180deg, #c7dbfb, rgb(199,219,251));
+    border-radius: 4px;
+  }
+  
+  .header {
+    background: #1e42b8;
+    padding: 1rem;
+  }
+  
+  .header h2 {
+    margin: 0;
+    color: rgb(199,219,251);
+    
+  }
+  
+  .content {
+    padding: 1rem;
+    color: #1e42b8;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .actions {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  @media (min-width: 768px) {
+    .modal {
+      left: calc(50% - 20rem);
+      width: 40rem;
+    }
+  }
+  .button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      background: linear-gradient(180deg, rgb(30,66,184), #1e42b8);
+      color: #c2e9e0;
+      font-family: 'Roboto Condensed', sans-serif;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(180deg, rgb(30,66,184), #1e42b8);
+    }

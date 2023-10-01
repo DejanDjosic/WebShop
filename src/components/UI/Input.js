@@ -30,6 +30,7 @@ const Input = React.forwardRef((props, ref) => {
           id={props.input}
           type={props.type}
           onBlur={props.onBlur}
+          value={props.value}
           required
         />
      </div>

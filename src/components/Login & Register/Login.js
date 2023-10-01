@@ -3,6 +3,10 @@ import classes from "./Login.module.css";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import LoginContext from "../Store/LoginContext";
+import Modal from "../UI/Modal";
+
+const USERNAME_REGEX = /^[a-zA-Z0-9._]{3,}$/;
+const PWD_REGEX = /^[A-Za-z]*[A-Za-z0-9]*[\w!@#$%^&*()-+=~]{8,24}$/;
 
 const Login = () => {
   const [enteredUsername, setEnteredUserName] = useState("");
@@ -11,6 +15,7 @@ const Login = () => {
   const [passwordIsValid, setPasswordIsValid] = useState(null);
 
   const [formIsValid, setFormIsValid] = useState(false);
+  const [modalMsg, setModalMsg] = useState("");
 
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
@@ -19,44 +24,55 @@ const Login = () => {
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      setFormIsValid(enteredUsername && enteredPassword);
+      setFormIsValid(usernameIsValid && passwordIsValid);
     }, 500);
 
     return () => {
       clearTimeout(identifier);
     };
-  }, [enteredUsername, enteredPassword]);
+  }, [usernameIsValid, passwordIsValid]);
 
   const usernameChangeHandler = (event) => {
     const enteredUsername = event.target.value;
     setEnteredUserName(enteredUsername);
-    setUsernameIsValid(enteredUsername.includes("@"));
+    setUsernameIsValid(USERNAME_REGEX.test(enteredUsername));
   };
 
   const passwordChangeHandler = (event) => {
     const enteredPassword = event.target.value;
     setEnteredPassword(enteredPassword);
-    setPasswordIsValid(enteredPassword.trim().length > 6);
+    setPasswordIsValid(PWD_REGEX.test(enteredPassword));
   };
 
   const validateUsernameHandler = () => {
-    setUsernameIsValid(enteredUsername.includes("@"));
+    setUsernameIsValid(USERNAME_REGEX.test(enteredUsername));
   };
 
   const validatePasswordHandler = () => {
-    setPasswordIsValid(enteredPassword.trim().length > 6);
+    setPasswordIsValid(PWD_REGEX.test(enteredPassword));
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
     if (formIsValid) {
+      setModalMsg("Login successful!");
       Lctx.onLogin(enteredUsername, enteredPassword);
+    } else if (!usernameIsValid && !passwordIsValid) {
+      setModalMsg("Wrong entered fields: Username & Password");
+
+      usernameInputRef.current.focus();
     } else if (!usernameIsValid) {
+      setModalMsg("Wrong entered field: Username");
+
       usernameInputRef.current.focus();
     } else {
+      setModalMsg("Wrong entered field: Password");
+
       passwordInputRef.current.focus();
     }
   };
+
+  const exitError = () => setModalMsg("");
 
   return (
     <div className={classes.Login_wrapper__288IT}>
@@ -83,11 +99,12 @@ const Login = () => {
           onChange={passwordChangeHandler}
           onBlur={validatePasswordHandler}
         />
-       
+
         <div className={classes.actions}>
-          <Button text="Login" icon="arrow"  />
+          <Button text="Login" icon="arrow" />
         </div>
       </form>
+      {modalMsg && <Modal message={modalMsg} closeError={exitError} />}
     </div>
   );
 };

@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useState } from "react";
 import classes from "./Register.module.css";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
+import Modal from "../UI/Modal";
 
 const initialInput = {
   enteredFirstName: "",
@@ -20,10 +21,8 @@ const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const Register = () => {
   const [userInput, setUserInput] = useState(initialInput);
   const [validInput, setValidInput] = useState(false);
-  // const [isFormValid, setIsFormValid] = useState(false);
 
-  // const [errMsg, setErrMsg] = useState("");
-  // const [success, setSuccess] = useState("");
+  const [modalMsg, setModalMsg] = useState("");
 
   const {
     enteredFirstName,
@@ -44,28 +43,16 @@ const Register = () => {
   } = validInput;
 
   const validityArray = () => {
-    if (
-      isValidFirstName &&
-      isValidLastName &&
-      isValidEmail &&
-      isValidUsername &&
-      isValidPassword &&
-      isValidConfrimPassword === true
-    )
-      return true;
-    else return false;
+    for (const key in validInput) {
+      if (validInput.hasOwnProperty(key)) {
+        if (validInput[key] === false) {
+          return false;
+        }
+      }
+    }
+    return true;
   };
 
-  const firstNameInputRef = useRef();
-  const lastNameInputRef = useRef();
-  const userNameInputRef = useRef();
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
-  const confrimedPasswordInputRef = useRef();
-
-  useEffect(() => {
-    firstNameInputRef.current.focus();
-  }, []);
 
   const validateInput = (input, regex, validity) => {
     const result = regex.test(input);
@@ -75,6 +62,7 @@ const Register = () => {
   };
 
 
+
   const validatePasswords = () => {
     const match = enteredPassword === confrimedPassword;
     setValidInput((prevState) => {
@@ -82,13 +70,36 @@ const Register = () => {
     });
   };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    console.log(validInput);
-    if (validityArray()) console.log("All inputs are correct");
-    else {
-      console.log("Not all inputs are correct!");
+  const resetInputs = () => {
+    for (const key in validInput) {
+      if (validInput.hasOwnProperty(key)) {
+        validInput[key] = false;
+      }
     }
+    setValidInput(false);
+    setUserInput(initialInput);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (validityArray()) {
+      setModalMsg("Registration successful!");
+      resetInputs();
+    } else {
+      let falseFields = [];
+      for (const key in validInput) {
+        if (validInput.hasOwnProperty(key)) {
+          if (validInput[key] === false) {
+            const modifiedKey = key.replace("isValid", "").trim();
+            falseFields.push(modifiedKey);
+          }
+        }
+        if (falseFields.length > 1)
+          setModalMsg("Wrong entered fields: " + falseFields.join(", "));
+        else setModalMsg("Wrong entered field: " + falseFields);
+      }
+    }
+   
   };
 
   const getInputValue = (input, value) => {
@@ -97,12 +108,13 @@ const Register = () => {
     });
   };
 
+  const exitError = () => setModalMsg("");
+
   return (
     <div className={classes.Register_wrapper__3ssER}>
       <h1 className={classes.Register_title__1dwTC}>Register</h1>
       <form onSubmit={submitHandler}>
         <Input
-          ref={firstNameInputRef}
           label="First name"
           input="enteredFirstName"
           type="text"
@@ -115,7 +127,6 @@ const Register = () => {
           onChange={(e) => getInputValue("enteredFirstName", e.target.value)}
         />
         <Input
-          ref={lastNameInputRef}
           label="Last name"
           input="enteredLastName"
           type="text"
@@ -128,7 +139,6 @@ const Register = () => {
           onChange={(e) => getInputValue("enteredLastName", e.target.value)}
         />
         <Input
-          ref={emailInputRef}
           label="E-mail"
           input="enteredEmail"
           type="text"
@@ -141,7 +151,6 @@ const Register = () => {
           onChange={(e) => getInputValue("enteredEmail", e.target.value)}
         />
         <Input
-          ref={userNameInputRef}
           label="Username"
           input="enteredUserName"
           type="text"
@@ -154,7 +163,6 @@ const Register = () => {
           onChange={(e) => getInputValue("enteredUserName", e.target.value)}
         />
         <Input
-          ref={passwordInputRef}
           label="Password"
           input="enteredPassword"
           type="password"
@@ -166,7 +174,6 @@ const Register = () => {
           onChange={(e) => getInputValue("enteredPassword", e.target.value)}
         />
         <Input
-          ref={confrimedPasswordInputRef}
           label="Confrim Password"
           input="confrimedPassword"
           type="password"
@@ -178,6 +185,7 @@ const Register = () => {
 
         <Button text="Register" icon="arrow" />
       </form>
+      {modalMsg && <Modal message={modalMsg} closeError={exitError} />}
     </div>
   );
 };
