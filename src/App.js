@@ -24,7 +24,7 @@ const AllProductsArray = [
     description:
       "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight &amp; soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket",
     image:
-      "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSS2IVbocnwFqCcnsAscVc7QYJWOVMGNh67xjiBZMW_o5gpzUUJ",
+      "https://m.media-amazon.com/images/I/71-3HjGNDUL.SS700.jpg",
     category: `Men's Clothing`,
 
     id: 2,

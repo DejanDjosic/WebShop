@@ -4,13 +4,28 @@ import classes from "./Products.module.css";
 
 
 const Products = (props) => {
-  const [details, setDetails] = useState(false);
-  
+
+const originalItems=props.items;
+
+
   props.items.forEach((element) => {
     element.description = `${element.description.slice(0, 100)}...`;
     if (element.name.length > 47)
       element.name = `${element.name.slice(0, 47)}...`;
   });
+
+
+  const [selectedProductId, setSelectedProductId] = useState(null);
+
+  const switchModal = (productId) => {
+    setSelectedProductId(productId);
+  };
+
+  const closeModal = () => {
+    setSelectedProductId(null);
+  };
+
+
 
   return (
     <div className={classes.Products_grid__3uY1j}>
@@ -32,13 +47,23 @@ const Products = (props) => {
             </div>
           </div>
           <div className={classes.parent}>
-          <div onClick={() => setDetails(true)}>More →</div>
+          <div onClick={()=>switchModal(product.id)}>More →</div>
+          {selectedProductId === product.id &&  (
+            <Product
+              closeModal={closeModal}
+              name={product.name}
+              image={product.image}
+              id={product.id}
+              description={product.description}
+              price={product.price}
+            />
+          )}
           </div>
-          {details && <Product props={props} />}
         </div>
       ))}
     </div>
   );
 };
+
 
 export default Products;
