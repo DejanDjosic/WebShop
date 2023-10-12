@@ -16,7 +16,7 @@ const AllProductsArray = [
       "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
     image: "https://i00.eu/img/3/1024x1024w/ezvaheqy/655417.webp",
     category: `Men's Clothing`,
-    id: 1,
+    id: 0,
   },
   {
     name: "Mens Casual Premium Slim Fit T-Shirts",
@@ -27,7 +27,7 @@ const AllProductsArray = [
       "https://m.media-amazon.com/images/I/71-3HjGNDUL.SS700.jpg",
     category: `Men's Clothing`,
 
-    id: 2,
+    id: 1,
   },
   {
     name: "Mens Cotton Jacket",
@@ -37,7 +37,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
     category: `Men's Clothing`,
 
-    id: 3,
+    id: 2,
   },
   {
     name: "Mens Casual Slim Fit",
@@ -47,7 +47,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
     category: `Men's Clothing`,
 
-    id: 4,
+    id: 3,
   },
   {
     name:
@@ -57,7 +57,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
     category: `Jewelery`,
 
-    id: 5,
+    id: 4,
   },
   {
     name: "Solid Gold Petite Micropave",
@@ -66,7 +66,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
     category: `Jewelery`,
 
-    id: 6,
+    id: 5,
   },
   {
     name: "White Gold Plated Princess",
@@ -75,7 +75,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
     category: `Jewelery`,
 
-    id: 7,
+    id: 6,
   },
   {
     name: "Pierced Owl Rose Gold Plated Stainless Steel Double",
@@ -85,7 +85,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
     category: `Jewelery`,
 
-    id: 8,
+    id: 7,
   },
   {
     name: "WD 2TB Elements Portable External Hard Drive - USB 3.0",
@@ -95,7 +95,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
     category: `Electronics`,
 
-    id: 9,
+    id: 8,
   },
   {
     name: "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
@@ -105,7 +105,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
     category: `Electronics`,
 
-    id: 10,
+    id: 9,
   },
   {
     name:
@@ -116,7 +116,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
     category: `Electronics`,
 
-    id: 11,
+    id: 10,
   },
   {
     name:
@@ -126,7 +126,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
     category: `Electronics`,
 
-    id: 12,
+    id: 11,
   },
   {
     name: "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
@@ -136,7 +136,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
     category: `Electronics`,
 
-    id: 13,
+    id: 12,
   },
   {
     name:
@@ -147,7 +147,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
     category: `Electronics`,
 
-    id: 14,
+    id: 13,
   },
   {
     name: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
@@ -157,7 +157,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
     category: `Women's Clothing`,
 
-    id: 15,
+    id: 14,
   },
   {
     name:
@@ -168,7 +168,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
     category: `Women's Clothing`,
 
-    id: 16,
+    id: 15,
   },
   {
     name: "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
@@ -178,7 +178,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
     category: `Women's Clothing`,
 
-    id: 17,
+    id: 16,
   },
   {
     name: "MBJ Women's Solid Short Sleeve Boat Neck V",
@@ -188,7 +188,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
     category: `Women's Clothing`,
 
-    id: 18,
+    id: 17,
   },
   {
     name: "Opna Women's Short Sleeve Moisture",
@@ -198,7 +198,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
     category: `Women's Clothing`,
 
-    id: 19,
+    id: 18,
   },
   {
     name: "DANVOUY Womens T Shirt Casual Cotton Short",
@@ -208,7 +208,7 @@ const AllProductsArray = [
     image: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
     category: `Women's Clothing`,
 
-    id: 20,
+    id: 19,
   },
 ];
 

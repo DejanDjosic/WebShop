@@ -8,16 +8,21 @@ const Backdrop = (props) => {
 };
 
 const Content = (props) => {
+
+const fixedPrice=`$${props.price.toFixed(2)}`;
+
+
+
   return (
     <div className={classes.modal}>
       <div className={classes.Details_details__1dx8S}>
-        <div className={classes.image_wrapper}>
-        <img src={props.img} className={classes.Details_img__3Dm5r} />
+        <div className={classes.Details_img__3Dm5r}>
+        <img src={props.img} alt={props.name}  />
         </div>
         <div>
         <Button function={props.closeModal} text="Go back" icon="←" ></Button>
           <h1 className={classes.Details_title__3_I8v}>{props.name} </h1>
-          <div className={classes.Details_price__2BFe6}>$ {props.price}</div>
+          <div className={classes.Details_price__2BFe6}>{fixedPrice}</div>
           <div className={classes.Details_desc__24Gs1}>
             {props.description}
           </div>
