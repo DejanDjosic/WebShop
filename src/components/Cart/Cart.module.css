@@ -1,0 +1,20 @@
+.Cart_cart__2pudL {
+    max-width: 1084px;
+    padding: 30px;
+    margin: 0 auto 30px;
+  }
+  .Cart_footer__34_Wn {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .Cart_total-value__jkjnM {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+  

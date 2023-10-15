@@ -15,15 +15,6 @@
   max-width: 100%; 
   height: auto; 
 }
-.Details_goback__rK7qw {
-  padding: 0;
-  margin-bottom: 20px;
-  border: none;
-  background-color: transparent;
-}
-.Details_goback__rK7qw:hover {
-  cursor: pointer;
-}
 .Details_title__3_I8v {
   margin-bottom: 20px;
   font-size: 32px;
@@ -51,10 +42,6 @@
 .Details_amount__1iKfJ {
   margin-top: 10px;
   color: #666;
-}
-.Details_amount-value__2VKAn {
-  font-size: 18px;
-  color: #333;
 }
 
 

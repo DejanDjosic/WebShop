@@ -6,7 +6,7 @@ import Login from "./components/Login & Register/Login";
 import Register from "./components/Login & Register/Register";
 import Cart from "./components/Cart/Cart";
 import Footer from "./components/Layout/Footer";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const AllProductsArray = [
   {
@@ -212,27 +212,31 @@ const AllProductsArray = [
   },
 ];
 
+const categories=['All','Electronics','Jewelery',`Men's Clothing` ,`Women's Clothing`];
+
 function App() {
   const [category, setCategory] = useState("All");
 
   const selectedCategoryArray = AllProductsArray.filter((product) => {
-    if (category.name === "All" || category === "All") {
+    if (category === "All" ) {
       return product;
     }
-    if (product.category === category.name) {
+    if ( product.category===category) {
       return product;
     }
   });
+
+  
   const categoryChangeHandler = (category) => setCategory(category);
 
   return (
     <div className="Layout_layout__23AcS">
-      <Header onCategoryChange={categoryChangeHandler} />
+      <Header categories={categories} onCategoryChange={categoryChangeHandler} />
       <Routes>
         <Route path="/" element={<Products items={selectedCategoryArray} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart categories={categories} onCategoryChange={categoryChangeHandler}/>} />
       </Routes>
       <Footer />
     </div>

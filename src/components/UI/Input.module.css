@@ -39,9 +39,6 @@
   background: #F2C0BD;
 }
 
-.actions {
-  text-align: center;
-}
 
 @media (min-width: 100%) {
   .control {

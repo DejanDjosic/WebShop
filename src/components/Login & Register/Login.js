@@ -6,14 +6,14 @@ import LoginContext from "../Store/LoginContext";
 import Modal from "../UI/Modal";
 
 const USERNAME_REGEX = /^[a-zA-Z0-9._]{3,}$/;
-const PWD_REGEX = /^[A-Za-z]*[A-Za-z0-9]*[\w!@#$%^&*()-+=~]{8,24}$/;
+const PWD_REGEX = /^[A-Za-z]*[A-Za-z0-9]*[\w!@#$%^&*()-+=~]{8,}$/;
 
 const Login = () => {
   const [enteredUsername, setEnteredUserName] = useState("");
   const [usernameIsValid, setUsernameIsValid] = useState(null);
   const [enteredPassword, setEnteredPassword] = useState("");
   const [passwordIsValid, setPasswordIsValid] = useState(null);
-
+ 
   const [formIsValid, setFormIsValid] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
 
@@ -52,23 +52,23 @@ const Login = () => {
     setPasswordIsValid(PWD_REGEX.test(enteredPassword));
   };
 
+  const setErrorMsg = (message, focusRef) => {
+    setModalMsg(message);
+    focusRef.current.focus();
+  };
+  
+
   const submitHandler = (event) => {
     event.preventDefault();
-    if (formIsValid) {
+      if (formIsValid) {
       setModalMsg("Login successful!");
       Lctx.onLogin(enteredUsername, enteredPassword);
     } else if (!usernameIsValid && !passwordIsValid) {
-      setModalMsg("Wrong entered fields: Username & Password");
-
-      usernameInputRef.current.focus();
+      setErrorMsg("Wrong entered fields: Username & Password", usernameInputRef);
     } else if (!usernameIsValid) {
-      setModalMsg("Wrong entered field: Username");
-
-      usernameInputRef.current.focus();
+      setErrorMsg("Wrong entered field: Username (must be longer than 3 characters)", usernameInputRef);
     } else {
-      setModalMsg("Wrong entered field: Password");
-
-      passwordInputRef.current.focus();
+      setErrorMsg("Wrong entered field: Password (must be longer than 8 characters)", passwordInputRef);
     }
   };
 

@@ -3,6 +3,18 @@ import classes from "./Register.module.css";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import Modal from "../UI/Modal";
+import { Link } from "react-router-dom";
+
+function CustomLink({ to, children, ...props }) {
+  return (
+    <div>
+      <Link to={to} {...props}>
+        {children}
+      </Link>
+    </div>
+  );
+}
+
 
 const initialInput = {
   enteredFirstName: "",
@@ -15,7 +27,7 @@ const initialInput = {
 
 const NAME_REGEX = /^[A-Z]{1}[a-z]{2,23}$/;
 const USERNAME_REGEX = /^[a-zA-Z0-9._]+$/;
-const PWD_REGEX = /^[A-Za-z]*[A-Za-z0-9]*[\w!@#$%^&*()-+=~]{8,24}$/;
+const PWD_REGEX = /^[A-Za-z]*[A-Za-z0-9]*[\w!@#$%^&*()-+=~]{8,54}$/;
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 const Register = () => {
@@ -69,7 +81,6 @@ const Register = () => {
       return { ...prevState, isValidConfrimPassword: match };
     });
   };
-
   const resetInputs = () => {
     for (const key in validInput) {
       if (validInput.hasOwnProperty(key)) {
@@ -86,19 +97,18 @@ const Register = () => {
       setModalMsg("Registration successful!");
       resetInputs();
     } else {
-      let falseFields = [];
+      const falseFields = [];
       for (const key in validInput) {
-        if (validInput.hasOwnProperty(key)) {
-          if (validInput[key] === false) {
-            const modifiedKey = key.replace("isValid", "").trim();
-            falseFields.push(modifiedKey);
-          }
+        if (!validInput[key]) {
+          const modifiedKey = key.replace("isValid", "").trim();
+          falseFields.push(modifiedKey);
         }
+      }
         if (falseFields.length > 1)
           setModalMsg("Wrong entered fields: " + falseFields.join(", "));
         else setModalMsg("Wrong entered field: " + falseFields);
       }
-    }
+    
    
   };
 
@@ -183,7 +193,8 @@ const Register = () => {
           onChange={(e) => getInputValue("confrimedPassword", e.target.value)}
         />
 
-        <Button text="Register" icon="arrow" />
+       {modalMsg?  <CustomLink to="/Login"><Button text="Register" icon="arrow" /></CustomLink> :<div><Button text="Register" icon="arrow" /></div> }  
+        
       </form>
       {modalMsg && <Modal message={modalMsg} closeError={exitError} />}
     </div>

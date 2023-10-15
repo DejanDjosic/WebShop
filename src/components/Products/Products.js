@@ -13,6 +13,7 @@ const Products = (props) => {
     setSelectedProductId(null);
   };
 
+
   return (
     <div className={classes.Products_grid__3uY1j}>
       {props.items.map((product) => {
@@ -36,7 +37,7 @@ const Products = (props) => {
                 {modifiedDescription} 
               </div>
             </div>
-            <div className={classes.parent}>
+            <div className={classes.details}>
               <div onClick={() => switchModal(product.id)}>More →</div>
               {selectedProductId === product.id && (
                 <Product
@@ -46,6 +47,7 @@ const Products = (props) => {
                   id={product.id}
                   description={product.description} 
                   price={product.price}
+                 category={product.category }
                 />
               )}
             </div>

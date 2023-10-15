@@ -6,16 +6,9 @@ import logoutSvg from "../../assets/log-out.svg";
 import userSvg from "../../assets/user-plus.svg";
 import cartSvg from "../../assets/cart.svg";
 import { Link } from "react-router-dom";
-import navClasses from "./Navbar.module.css";
 import LoginContext from "../Store/LoginContext";
+import CartContext from "../Store/context";
 
-const categories = [
-  { name: "All", id: 1 },
-  { name: "Electronics", id: 2 },
-  { name: "Jewelery", id: 3 },
-  { name: `Men's Clothing`, id: 4 },
-  { name: `Women's Clothing`, id: 5 },
-];
 
 function CustomLink({ to, children, ...props }) {
   return (
@@ -29,6 +22,14 @@ function CustomLink({ to, children, ...props }) {
 
 const Header = (props) => {
   const Lctx = useContext(LoginContext);
+  const Cctx=useContext(CartContext);
+
+  let cartNumber=0;
+ 
+  Cctx.items.forEach(element => {
+    cartNumber+=element.amount;
+  });
+   
   return (
     <header>
       <div className={classes.Header_header__182Qc}>
@@ -86,23 +87,23 @@ const Header = (props) => {
                 alt="Cart"
                 className={classes.CartHeader_icon__a4zZI}
               />
-              <div className={classes.CartHeader_count__j8Uih}>0</div>
+              <div className={classes.CartHeader_count__j8Uih}>{cartNumber}</div>
             </CustomLink>
           </div>
         </div>
       </div>
       <nav>
-        <div className={navClasses.Categories_optionbar__1zY3C}>
-          {categories.map((category) => {
+        <div className={classes.Categories_optionbar__1zY3C}>
+          {props.categories.map((category,index) => {
             return (
               <CustomLink to="/"
-                key={category.id}
-                className={navClasses.Categories_item__2Vyh8}
+                key={index}
+                className={classes.Categories_item__2Vyh8}
                 onClick={() => {
                   props.onCategoryChange(category);
                 }}
               >
-                {category.name}
+                {category}
               </CustomLink>
             );
           })}
