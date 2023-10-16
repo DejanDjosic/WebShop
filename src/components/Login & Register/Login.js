@@ -20,6 +20,8 @@ const Login = () => {
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
 
+
+
   const Lctx = useContext(LoginContext);
 
   useEffect(() => {
@@ -52,23 +54,19 @@ const Login = () => {
     setPasswordIsValid(PWD_REGEX.test(enteredPassword));
   };
 
-  const setErrorMsg = (message, focusRef) => {
-    setModalMsg(message);
-    focusRef.current.focus();
-  };
-  
+ 
 
   const submitHandler = (event) => {
     event.preventDefault();
       if (formIsValid) {
       setModalMsg("Login successful!");
       Lctx.onLogin(enteredUsername, enteredPassword);
-    } else if (!usernameIsValid && !passwordIsValid) {
-      setErrorMsg("Wrong entered fields: Username & Password", usernameInputRef);
+         } else if (!usernameIsValid && !passwordIsValid) {
+      setModalMsg("Wrong entered fields: Username & Password");
     } else if (!usernameIsValid) {
-      setErrorMsg("Wrong entered field: Username (must be longer than 3 characters)", usernameInputRef);
+      setModalMsg("Wrong entered field: Username (must be longer than 3 characters)");
     } else {
-      setErrorMsg("Wrong entered field: Password (must be longer than 8 characters)", passwordInputRef);
+      setModalMsg("Wrong entered field: Password (must be longer than 8 characters)");
     }
   };
 

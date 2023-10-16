@@ -32,6 +32,7 @@ const ModalContent = (props) => {
   } else {
     heading = "Invalid input!";
   }
+
   return (
     <div className={classes.modal}>
       <div className={classes.content}>

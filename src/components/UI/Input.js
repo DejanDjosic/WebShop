@@ -1,21 +1,12 @@
-import React, { useRef, useImperativeHandle } from "react";
+import React from "react";
 import classes from './Input.module.css';
-const Input = React.forwardRef((props, ref) => {
+const Input = (props) => {
 
   const inputClasses = `${classes.control} ${
     props.isValid === false ? classes.invalid : ""
   }`;
-  const inputRef = useRef();
 
-  const activate = () => {
-    inputRef.current.focus();
-  };
-
-  useImperativeHandle(ref, () => {
-    return {
-      focus: activate,
-    };
-  });
+  
   return (
     <div className={classes.Input_wrapper}>
    <div className={classes.control}>
@@ -25,7 +16,6 @@ const Input = React.forwardRef((props, ref) => {
         <input
           className={inputClasses}
           onChange={props.onChange}
-          ref={inputRef}
           name={props.input}
           id={props.input}
           type={props.type}
@@ -36,6 +26,6 @@ const Input = React.forwardRef((props, ref) => {
      </div>
     </div>
   );
-});
+};
 
 export default Input;

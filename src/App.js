@@ -6,7 +6,8 @@ import Login from "./components/Login & Register/Login";
 import Register from "./components/Login & Register/Register";
 import Cart from "./components/Cart/Cart";
 import Footer from "./components/Layout/Footer";
-import { useState,useEffect } from "react";
+import { useState } from "react";
+import Checkout from "./components/Cart/Checkout";
 
 const AllProductsArray = [
   {
@@ -237,6 +238,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/cart" element={<Cart categories={categories} onCategoryChange={categoryChangeHandler}/>} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </div>

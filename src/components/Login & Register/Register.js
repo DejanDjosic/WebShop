@@ -1,20 +1,8 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import classes from "./Register.module.css";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import Modal from "../UI/Modal";
-import { Link } from "react-router-dom";
-
-function CustomLink({ to, children, ...props }) {
-  return (
-    <div>
-      <Link to={to} {...props}>
-        {children}
-      </Link>
-    </div>
-  );
-}
-
 
 const initialInput = {
   enteredFirstName: "",
@@ -65,15 +53,12 @@ const Register = () => {
     return true;
   };
 
-
   const validateInput = (input, regex, validity) => {
     const result = regex.test(input);
     setValidInput((prevState) => {
       return { ...prevState, [validity]: result };
     });
   };
-
-
 
   const validatePasswords = () => {
     const match = enteredPassword === confrimedPassword;
@@ -104,12 +89,10 @@ const Register = () => {
           falseFields.push(modifiedKey);
         }
       }
-        if (falseFields.length > 1)
-          setModalMsg("Wrong entered fields: " + falseFields.join(", "));
-        else setModalMsg("Wrong entered field: " + falseFields);
-      }
-    
-   
+      if (falseFields.length > 1)
+        setModalMsg("Wrong entered fields: " + falseFields.join(", "));
+      else setModalMsg("Wrong entered field: " + falseFields);
+    }
   };
 
   const getInputValue = (input, value) => {
@@ -193,8 +176,7 @@ const Register = () => {
           onChange={(e) => getInputValue("confrimedPassword", e.target.value)}
         />
 
-       {modalMsg?  <CustomLink to="/Login"><Button text="Register" icon="arrow" /></CustomLink> :<div><Button text="Register" icon="arrow" /></div> }  
-        
+        <Button text="Register" icon="arrow" />
       </form>
       {modalMsg && <Modal message={modalMsg} closeError={exitError} />}
     </div>
