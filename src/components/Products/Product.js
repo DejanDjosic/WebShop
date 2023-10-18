@@ -46,7 +46,7 @@ const Content = (props) => {
     <div className={classes.modal}>
       <div className={classes.Details_details__1dx8S}>
         <div className={classes.Details_img__3Dm5r}>
-          <img src={props.img} alt={props.name} />
+          <img height="100" width="100" src={props.img} alt={props.name} />
         </div>
         <div>
           <Button function={props.closeModal} text="Go back" icon="←"></Button>
